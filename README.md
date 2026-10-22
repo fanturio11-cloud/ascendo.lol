@@ -1,2 +1,2 @@
 # ascendo.lol
-ascendo.lol
+yoooo wsg
