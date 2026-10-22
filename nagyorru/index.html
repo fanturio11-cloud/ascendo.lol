@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=20261022-3">
-<script src="../app.js?v=20261022-3" defer></script>
+<link rel="stylesheet" href="../styles.css?v=20261022-4">
+<script src="../app.js?v=20261022-4" defer></script>
 <title>nagyorru | Ascendo</title>
 <meta name="description" content="nagyorru">
 </head>
@@ -43,15 +43,10 @@
     </section>
   </main>
 
-  <div class="media-controls" id="mediaControls" role="group" aria-label="Background media controls" hidden>
-    <button class="media-control" id="playToggle" type="button" aria-label="Pause background video and audio" aria-pressed="true">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>
-      <span id="playText">pause</span>
-    </button>
-    <button class="media-control" id="soundToggle" type="button" aria-label="Mute background audio" aria-pressed="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Zm4 4a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/></svg>
-      <span id="soundText">sound on</span>
-    </button>
+  <div class="media-controls" id="mediaControls" role="group" aria-label="Background volume" hidden>
+    <svg class="volume-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Zm4 4a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/></svg>
+    <input class="volume-slider" id="volumeControl" type="range" min="0" max="100" value="65" step="1" aria-label="Background audio volume" aria-valuetext="65 percent">
+    <span class="volume-value" id="volumeValue" aria-hidden="true">65%</span>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
