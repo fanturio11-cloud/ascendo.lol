@@ -94,6 +94,9 @@
     document.body.classList.add('profile--entered');
     content.removeAttribute('inert');
     gate?.setAttribute('aria-hidden', 'true');
+    if (mediaControls) mediaControls.hidden = false;
+    syncSound();
+    syncPlayback();
     video.src = '../assets/music-background.mp4';
     video.volume = 0.65;
     video.muted = false;
