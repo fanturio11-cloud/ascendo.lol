@@ -1,62 +1,49 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Ascendo" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ascendo" />
-    <meta property="og:description" content="Ascendo" />
-    <meta property="og:url" content="https://ascendo.lol/" />
-    <title>Ascendo</title>
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script defer src="./app.js"></script>
-  </head>
-  <body>
-    <main class="landing" aria-label="Ascendo landing page">
-      <section class="hero">
-        <img class="hero__logo" src="./assets/ascendo-logo.png" alt="Ascendo" />
-
-        <a class="download" id="downloadButton" href="#" aria-label="Download Ascendo Client 26.3">
-          <span class="download__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3v11" />
-              <path d="m7 10 5 5 5-5" />
-              <path d="M4 20h16" />
-            </svg>
-          </span>
-          <span>Download Ascendo Client 26.3</span>
-        </a>
-
-        <div class="section-label" aria-hidden="true">
-          <span class="section-label__line"></span>
-          <span class="section-label__text">Founders</span>
-          <span class="section-label__line"></span>
-        </div>
-
-        <div class="founders" aria-label="Founders">
-          <article class="founder-card">
-            <div class="founder-card__avatar-wrap founder-card__avatar-wrap--primary">
-              <img class="founder-card__avatar" src="./assets/mypfp-poster.jpg" alt="nagyorru" />
-            </div>
-            <span class="founder-card__name">nagyorru</span>
-          </article>
-
-          <article class="founder-card">
-            <div class="founder-card__avatar-wrap">
-              <img class="founder-card__avatar" src="./assets/k3rlsen-avatar.png" alt="k3rlsen" />
-            </div>
-            <span class="founder-card__name">k3rlsen</span>
-          </article>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Ascendo Client">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ascendo">
+  <meta property="og:description" content="Ascendo Client 26.3">
+  <title>Ascendo</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body class="page page--home">
+  <main class="landing">
+    <div class="landing__inner">
+      <img class="brand-logo" src="./assets/ascendo-logo.png" alt="Ascendo" width="1300" height="414" fetchpriority="high">
+      <a class="download-button" id="downloadButton" href="#" aria-label="Download Ascendo Client 26.3">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 18.5v2h16v-2"/></svg>
+        <span>Download Ascendo Client 26.3</span>
+      </a>
+      <section class="founders-section" aria-label="Founders">
+        <div class="section-heading"><span>Founders</span></div>
+        <div class="founders-list">
+          <a class="founder-pill" href="./nagyorru/" aria-label="Open nagyorru's profile">
+            <span class="avatar avatar--small">
+              <img src="./assets/mypfp-poster.jpg" alt="" width="64" height="64">
+              <video class="avatar__video" src="./assets/mypfp.mp4" autoplay muted loop playsinline preload="metadata" poster="./assets/mypfp-poster.jpg" aria-hidden="true"></video>
+            </span>
+            <span class="founder-pill__name">nagyorru</span>
+            <svg class="pill-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a class="founder-pill" href="./k3rlsen/" aria-label="Open k3rlsen's profile">
+            <span class="avatar avatar--small"><img src="./assets/k3rlsen-avatar.png" alt="" width="64" height="64"></span>
+            <span class="founder-pill__name">k3rlsen</span>
+            <svg class="pill-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
         </div>
       </section>
-    </main>
-
-    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-  </body>
+    </div>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
 </html>
