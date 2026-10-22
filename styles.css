@@ -60,16 +60,24 @@ button,a{font:inherit;-webkit-tap-highlight-color:transparent}a{color:inherit;te
 .copy-mark{width:18px;height:18px;flex:none;color:#b69acd}
 .profile--entered .profile-gate{opacity:0;visibility:hidden;pointer-events:none}
 .profile--entered .profile{opacity:1;visibility:visible;transform:translateY(0)}
-.media-controls{position:fixed;z-index:7;bottom:25px;right:28px;display:flex;gap:8px}
-.media-control{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:10px 13px;border:1px solid rgba(226,199,255,.25);border-radius:12px;color:#ece4f3;background:rgba(22,16,29,.68);box-shadow:inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:12px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
-.media-control:hover,.media-control:focus-visible{transform:translateY(-1px);background:rgba(35,24,46,.82);border-color:rgba(222,185,255,.45)}
-.media-control svg{width:18px;height:18px}
+.media-controls{position:fixed;z-index:7;right:28px;bottom:25px;display:flex;align-items:center;gap:11px;min-height:46px;padding:10px 13px;border:1px solid rgba(226,199,255,.25);border-radius:15px;color:#ece4f3;background:rgba(22,16,29,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 32px rgba(0,0,0,.22);backdrop-filter:blur(16px) saturate(1.14);-webkit-backdrop-filter:blur(16px) saturate(1.14);transition:background .22s,border-color .22s,transform .22s}
+.media-controls:hover{transform:translateY(-1px);background:rgba(35,24,46,.84);border-color:rgba(222,185,255,.42)}
+.volume-icon{width:18px;height:18px;flex:none;color:#eee4f8}
+.volume-slider{--volume:65%;width:clamp(105px,14vw,150px);height:18px;margin:0;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer}
+.volume-slider:focus-visible{outline:2px solid #e8d5ff;outline-offset:5px;border-radius:10px}
+.volume-slider::-webkit-slider-runnable-track{height:4px;border-radius:99px;background:linear-gradient(90deg,#d5adff var(--volume),rgba(255,255,255,.16) var(--volume));box-shadow:inset 0 1px 1px rgba(0,0,0,.3)}
+.volume-slider::-webkit-slider-thumb{width:15px;height:15px;margin-top:-5.5px;border:2px solid #f3e7ff;border-radius:50%;appearance:none;-webkit-appearance:none;background:#ad6df3;box-shadow:0 0 0 4px rgba(177,105,247,.12),0 3px 10px rgba(0,0,0,.4);transition:transform .16s var(--ease),box-shadow .16s}
+.volume-slider:hover::-webkit-slider-thumb{transform:scale(1.15);box-shadow:0 0 0 6px rgba(177,105,247,.16),0 3px 12px rgba(0,0,0,.45)}
+.volume-slider::-moz-range-track{height:4px;border-radius:99px;background:rgba(255,255,255,.16)}
+.volume-slider::-moz-range-progress{height:4px;border-radius:99px;background:#d5adff}
+.volume-slider::-moz-range-thumb{width:13px;height:13px;border:2px solid #f3e7ff;border-radius:50%;background:#ad6df3;box-shadow:0 0 0 4px rgba(177,105,247,.12),0 3px 10px rgba(0,0,0,.4)}
+.volume-value{min-width:34px;color:#cfc4d9;font-size:11px;font-variant-numeric:tabular-nums;text-align:right}
 .toast{position:fixed;z-index:25;bottom:24px;left:50%;transform:translate(-50%,10px);padding:11px 16px;border-radius:11px;border:1px solid rgba(220,192,251,.2);background:#18131f;color:#f3edf9;font-size:12px;opacity:0;pointer-events:none;white-space:nowrap;max-width:calc(100vw - 30px);overflow:hidden;text-overflow:ellipsis;transition:opacity .2s,transform .2s}
 .toast.is-visible{opacity:1;transform:translate(-50%,0)}
 @media(max-width:620px){
  .landing{padding:32px 18px 55px}.landing__inner{transform:translateY(-.8vh)}
  .brand-logo{width:min(94vw,420px)}.download-button{margin-top:30px;min-height:52px;padding:13px 14px;gap:11px;font-size:clamp(12px,3.4vw,15px);letter-spacing:.02em}
  .download-button svg{width:20px;height:20px}.founders-section{margin-top:52px}.founders-list{grid-template-columns:1fr;max-width:310px;margin:22px auto 0;gap:12px}.founder-pill{min-height:70px}
- .back-link{top:24px;left:22px}.media-controls{right:15px;bottom:17px}.media-control{padding:10px 11px}
+ .back-link{top:24px;left:22px}.media-controls{right:15px;bottom:17px}.volume-slider{width:min(30vw,125px)}
 }
 @media(prefers-reduced-motion:reduce){.avatar__video{display:none}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}

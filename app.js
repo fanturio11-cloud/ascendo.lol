@@ -55,33 +55,25 @@
   const gate = document.getElementById('profileGate');
   const video = document.getElementById('musicBackground');
   const mediaControls = document.getElementById('mediaControls');
-  const playButton = document.getElementById('playToggle');
-  const playText = document.getElementById('playText');
-  const soundButton = document.getElementById('soundToggle');
-  const soundText = document.getElementById('soundText');
+  const volumeControl = document.getElementById('volumeControl');
+  const volumeValue = document.getElementById('volumeValue');
   if (!enterButton || !video || !content) return;
 
   let entered = false;
-  function syncSound() {
-    const muted = video.muted || video.volume === 0;
-    if (soundText) soundText.textContent = muted ? 'sound off' : 'sound on';
-    soundButton?.setAttribute('aria-label', muted ? 'Unmute background audio' : 'Mute background audio');
-    soundButton?.setAttribute('aria-pressed', String(!muted));
-  }
-
-  function syncPlayback() {
-    if (playText) playText.textContent = video.paused ? 'play' : 'pause';
-    playButton?.setAttribute('aria-label', video.paused ? 'Play background video and audio' : 'Pause background video and audio');
-    playButton?.setAttribute('aria-pressed', String(!video.paused));
+  function syncVolume() {
+    if (!volumeControl) return;
+    const percentage = Math.round(video.muted ? 0 : video.volume * 100);
+    volumeControl.value = String(percentage);
+    volumeControl.style.setProperty('--volume', `${percentage}%`);
+    if (volumeValue) volumeValue.textContent = `${percentage}%`;
+    volumeControl.setAttribute('aria-valuetext', percentage === 0 ? 'Muted' : `${percentage} percent`);
   }
 
   video.addEventListener('playing', () => {
     document.body.classList.add('has-video');
     if (mediaControls) mediaControls.hidden = false;
-    syncSound();
-    syncPlayback();
+    syncVolume();
   });
-  video.addEventListener('pause', syncPlayback);
   video.addEventListener('error', () => {
     document.body.classList.remove('has-video');
     if (mediaControls) mediaControls.hidden = true;
@@ -95,26 +87,22 @@
     content.removeAttribute('inert');
     gate?.setAttribute('aria-hidden', 'true');
     if (mediaControls) mediaControls.hidden = false;
-    syncSound();
-    syncPlayback();
+    syncVolume();
     video.src = '../assets/music-background.mp4';
     video.volume = 0.65;
     video.muted = false;
     video.play().catch(() => {
       video.muted = true;
-      syncSound();
-      video.play().catch(() => showToast('Press play to start the background media'));
+      syncVolume();
+      video.play().catch(() => showToast('Background playback is unavailable'));
     });
     setTimeout(() => { if (gate) gate.hidden = true; }, reduceMotion.matches ? 10 : 650);
   });
 
-  playButton?.addEventListener('click', () => {
-    if (video.paused) video.play().catch(() => showToast('Playback is unavailable'));
-    else video.pause();
-  });
-
-  soundButton?.addEventListener('click', () => {
-    video.muted = !video.muted;
-    syncSound();
+  volumeControl?.addEventListener('input', () => {
+    const volume = Number(volumeControl.value) / 100;
+    video.volume = volume;
+    video.muted = volume === 0;
+    syncVolume();
   });
 })();
