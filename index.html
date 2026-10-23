@@ -13,11 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20261022-5">
-  <script src="./app.js?v=20261022-5" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261023-1">
+  <script src="./app.js?v=20261023-1" defer></script>
 </head>
 <body class="page page--home">
   <main class="landing">
+    <div class="floating-words" id="floatingWords" aria-hidden="true"></div>
     <div class="landing__inner">
       <img class="brand-logo" src="./assets/ascendo-logo.png" alt="Ascendo" width="1300" height="414" fetchpriority="high">
       <a class="download-button" id="downloadButton" href="https://discord.gg/7k88ggycdr" target="_blank" rel="noopener noreferrer" aria-label="Download Ascendo Client 26.3 from the Ascendo Discord">
@@ -27,15 +28,15 @@
       <section class="founders-section" aria-label="Founders">
         <div class="section-heading"><span>Founders</span></div>
         <div class="founders-list">
-          <a class="founder-pill" href="./nagyorru/" aria-label="Open nagyorru's profile">
+          <a class="founder-pill" href="./internalcheats/" data-transition aria-label="Open InternalCheats's profile">
             <span class="avatar avatar--small">
               <img src="./assets/mypfp-poster.jpg" alt="" width="64" height="64">
               <video class="avatar__video" src="./assets/mypfp.mp4" autoplay muted loop playsinline preload="metadata" poster="./assets/mypfp-poster.jpg" aria-hidden="true"></video>
             </span>
-            <span class="founder-pill__name">nagyorru</span>
+            <span class="founder-pill__name">InternalCheats</span>
             <svg class="pill-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
           </a>
-          <a class="founder-pill" href="./k3rlsen/" aria-label="Open k3rlsen's profile">
+          <a class="founder-pill" href="./k3rlsen/" data-transition aria-label="Open k3rlsen's profile">
             <span class="avatar avatar--small"><img src="./assets/k3rlsen-avatar.png" alt="" width="64" height="64"></span>
             <span class="founder-pill__name">k3rlsen</span>
             <svg class="pill-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>

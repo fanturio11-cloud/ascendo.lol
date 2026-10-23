@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=20261023-1">
+<script src="../app.js?v=20261023-1" defer></script>
+<title>InternalCheats | Ascendo</title>
+<link rel="canonical" href="https://ascendo.lol/internalcheats/">
+<meta name="description" content="InternalCheats — founder @ ascendo.lol">
+</head>
+<body class="page page--profile" data-person="internalcheats">
+  <div class="video-stage" aria-hidden="true">
+    <video id="musicBackground" class="video-stage__video" playsinline loop preload="none"></video>
+    <div class="video-stage__shade"></div>
+  </div>
+  <a class="back-link" href="../" data-transition aria-label="Back to Ascendo home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+    <span>back</span>
+  </a>
+
+  <main class="profile" id="profileContent">
+    <section class="profile__panel" aria-label="InternalCheats profile">
+      <span class="avatar avatar--large"><img src="../assets/mypfp-poster.jpg" alt="" width="118" height="118"><video class="avatar__video" src="../assets/mypfp.mp4" autoplay muted loop playsinline preload="metadata" poster="../assets/mypfp-poster.jpg" aria-hidden="true"></video></span>
+      <h1 class="profile__name">InternalCheats</h1>
+      <div class="profile__bio">
+        <p>founder @ <a href="https://ascendo.lol/" target="_blank" rel="noopener noreferrer">ascendo.lol</a></p>
+        <p>genuine retard</p>
+      </div>
+      <div class="profile__divider"></div>
+      <nav class="social-list" aria-label="InternalCheats socials">
+        <button class="social-link" type="button" data-copy="internalcheats" data-platform="Discord" aria-label="Copy Discord username internalcheats"><span class="social-link__symbol"><img src="../assets/discord.svg" alt="Discord" width="64" height="48" aria-hidden="true"></span><span class="social-link__info"><span class="social-link__platform">Discord</span><span class="social-link__handle">internalcheats</span></span><svg class="copy-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button>
+        <button class="social-link" type="button" data-copy="InternalCheat" data-platform="Minecraft IGN" aria-label="Copy Minecraft IGN username InternalCheat"><span class="social-link__symbol"><img src="../assets/minecraft-creeper.svg" alt="Minecraft" width="24" height="24" aria-hidden="true"></span><span class="social-link__info"><span class="social-link__platform">Minecraft IGN</span><span class="social-link__handle">InternalCheat</span></span><svg class="copy-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button>
+      </nav>
+    </section>
+  </main>
+
+  <div class="media-controls" id="mediaControls" role="group" aria-label="Background volume" hidden>
+    <svg class="volume-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Zm4 4a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/></svg>
+    <input class="volume-slider" id="volumeControl" type="range" min="0" max="100" value="65" step="1" aria-label="Background audio volume" aria-valuetext="65 percent">
+    <span class="volume-value" id="volumeValue" aria-hidden="true">65%</span>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
