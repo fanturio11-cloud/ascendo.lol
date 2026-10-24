@@ -37,17 +37,17 @@
     }
   });
 
-  const avatars = [...document.querySelectorAll('.avatar__video')];
-  function syncAvatars() {
-    for (const avatar of avatars) {
-      avatar.muted = true;
-      if (reduceMotion.matches || document.hidden) avatar.pause();
-      else avatar.play().catch(() => {});
+  for (const avatar of document.querySelectorAll('img[data-fallback]')) {
+    function showPoster() {
+      const poster = avatar.dataset.fallback;
+      if (!poster) return;
+      delete avatar.dataset.fallback;
+      for (const source of avatar.parentElement.querySelectorAll('source')) source.remove();
+      avatar.src = poster;
     }
+    avatar.addEventListener('error', showPoster, { once: true });
+    if (avatar.complete && avatar.naturalWidth === 0) showPoster();
   }
-  syncAvatars();
-  reduceMotion.addEventListener('change', syncAvatars);
-  document.addEventListener('visibilitychange', syncAvatars);
 
   const wordLayer = document.getElementById('floatingWords');
   if (wordLayer) {
@@ -63,8 +63,7 @@
       const word = document.createElement('span');
       word.className = 'floating-word';
       word.textContent = remainingPhrases.splice(phraseIndex, 1)[0];
-      word.style.setProperty('--word-size', `${narrowScreen.matches ? 12 + Math.random() * 3 : 15 + Math.random() * 8}px`);
-      word.style.setProperty('--word-duration', `${16 + Math.random() * 6}s`);
+      word.style.setProperty('--word-size', `${narrowScreen.matches ? 12 + Math.random() * 4 : 16 + Math.random() * 8}px`);
       word.style.setProperty('--word-drift', `${Math.random() * 48 - 24}px`);
       wordLayer.appendChild(word);
 
@@ -99,7 +98,7 @@
         if (document.hidden || reduceMotion.matches) return;
         spawnWord();
         scheduleWord();
-      }, 4000 + Math.random() * 2000);
+      }, narrowScreen.matches ? 1200 + Math.random() * 600 : 800 + Math.random() * 500);
     }
 
     function resetWords() {
@@ -154,9 +153,80 @@
 
   const video = document.getElementById('musicBackground');
   const mediaControls = document.getElementById('mediaControls');
+  const volumeButton = document.getElementById('volumeButton');
+  const volumePanel = document.getElementById('volumePanel');
   const volumeControl = document.getElementById('volumeControl');
   const volumeValue = document.getElementById('volumeValue');
   if (!video) return;
+
+  if (mediaControls && volumeButton && volumePanel) {
+    let pinned = false;
+    let pointerInside = false;
+    let dragging = false;
+    let dismissed = false;
+
+    function refreshDisclosure() {
+      const expanded = pinned || dragging || (!dismissed && (pointerInside || mediaControls.contains(document.activeElement)));
+      mediaControls.classList.toggle('is-expanded', expanded);
+      volumeButton.setAttribute('aria-expanded', String(expanded));
+      volumeButton.setAttribute('aria-label', expanded ? 'Hide volume control' : 'Show volume control');
+      volumePanel.inert = !expanded;
+      volumePanel.setAttribute('aria-hidden', String(!expanded));
+    }
+
+    function dismissDisclosure() {
+      pinned = false;
+      dragging = false;
+      dismissed = true;
+      refreshDisclosure();
+    }
+
+    mediaControls.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse') return;
+      pointerInside = true;
+      dismissed = false;
+      refreshDisclosure();
+    });
+    mediaControls.addEventListener('pointerleave', () => {
+      pointerInside = false;
+      refreshDisclosure();
+    });
+    mediaControls.addEventListener('focusin', event => {
+      if (!mediaControls.contains(event.relatedTarget)) dismissed = false;
+      refreshDisclosure();
+    });
+    mediaControls.addEventListener('focusout', () => queueMicrotask(refreshDisclosure));
+    volumeButton.addEventListener('click', () => {
+      pinned = !pinned;
+      dismissed = !pinned;
+      refreshDisclosure();
+    });
+    volumeControl?.addEventListener('pointerdown', () => {
+      dragging = true;
+      dismissed = false;
+      refreshDisclosure();
+    });
+    for (const eventName of ['pointerup', 'pointercancel']) {
+      document.addEventListener(eventName, () => {
+        dragging = false;
+        refreshDisclosure();
+      });
+    }
+    document.addEventListener('pointerdown', event => {
+      if (!mediaControls.contains(event.target)) dismissDisclosure();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape' || !mediaControls.classList.contains('is-expanded')) return;
+      volumeButton.focus({ preventScroll: true });
+      dismissDisclosure();
+      event.preventDefault();
+    });
+    window.addEventListener('pageshow', () => {
+      pointerInside = false;
+      dismissDisclosure();
+    });
+    refreshDisclosure();
+  }
 
   function syncVolume() {
     if (!volumeControl) return;
@@ -164,6 +234,7 @@
     volumeControl.value = String(percentage);
     volumeControl.style.setProperty('--volume', `${percentage}%`);
     if (volumeValue) volumeValue.textContent = `${percentage}%`;
+    mediaControls?.classList.toggle('is-muted', percentage === 0);
     volumeControl.setAttribute('aria-valuetext', percentage === 0 ? 'Muted' : `${percentage} percent`);
   }
 
