@@ -9,6 +9,7 @@ A curated static GitHub Pages site. There are no public accounts or profile-crea
 - `/internalcheats/`: InternalCheats; Discord `internalcheats`; Minecraft IGN `InternalCheat`.
 - `/k3rlsen/`: k3rlsen; TikTok `@ferenckop`; Instagram `@_shewantss.csxngi`; Discord `27ia`.
 - `/nagyorru/`: compatibility redirect to `/internalcheats/`, with a visible fallback link.
+- `/404.html`: custom recovery-page preview. GitHub Pages serves this same page for unknown routes while retaining HTTP 404.
 
 Profiles open immediately. The existing video attempts playback with audio, falls back to muted playback when required by the browser, and has an accessible sound control. Hover or focus the sound button to expand the slider; tap/click to pin it open or close it. Escape or an outside tap closes it. Adjusting the slider is a user interaction that can enable audio. Content remains visible if JavaScript or media is unavailable.
 
@@ -29,6 +30,8 @@ InternalCheats's bio links to Ascendo and javitointezet, and the GitHub row link
 All original media remains in `assets/`. InternalCheats uses `assets/mypfp-animated.webp`, generated from all 113 original MP4 frames at 20 fps (5.65 seconds), with a still-poster source for reduced motion and an image-error fallback. k3rlsen uses a face-and-shoulders crop in `assets/k3rlsen-mbappe.webp`; the supplied original is preserved in `assets/k3rlsen-mbappe-original.png`. The Ascendo PNG/ICO favicons are derived from the supplied purple mark. The local white GitHub mark comes from [Primer Octicons](https://github.com/primer/octicons/blob/main/icons/mark-github-16.svg). The white Discord symbol in `assets/discord.svg` comes from [Discord's brand page](https://discord.com/branding), specifically [the white symbol asset](https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d7f4ef6498ac018f2c55_Symbol.svg). `assets/minecraft-creeper.svg` is the recognizable pixel Creeper-face treatment used beside the Minecraft IGN.
 
 Keep `CNAME` set to `ascendo.lol`. GitHub Pages deploys from `main`; verify the Pages workflow and live domain after merging. Version stylesheet/script references together when changing shared assets.
+
+The custom 404 uses root-absolute resources and recovery links so nested missing routes work too. It includes branded vector artwork, home/plugin/founder/community destinations, native troubleshooting details, and an optional same-origin previous-page button. The requested pathname is displayed as bounded plain text, with control/bidirectional formatting characters removed; copying retains only the original pathname, never its query or fragment. Clipboard failure is handled without blocking navigation. All essential links and help remain usable without JavaScript. Artwork pauses offscreen/in hidden tabs and respects reduced motion. No automatic redirect, fake service-status display, analytics, video, or download is added. Verify an actual missing URL, not just the preview, when checking the HTTP status.
 
 ## Plugin downloads
 
