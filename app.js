@@ -68,7 +68,7 @@
       wordLayer.appendChild(word);
 
       const layerBounds = wordLayer.getBoundingClientRect();
-      const protectedBounds = [...document.querySelectorAll('.brand-logo, .download-button, .section-heading, .founders-list')]
+      const protectedBounds = [...document.querySelectorAll('.brand-logo, .download-button, .plugins-button, .section-heading, .founders-list, .plugins-heading, .plugin-grid, .back-link')]
         .map(element => element.getBoundingClientRect());
       const existingBounds = [...wordLayer.children].filter(element => element !== word)
         .map(element => element.getBoundingClientRect());
